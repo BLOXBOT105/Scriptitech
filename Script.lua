@@ -13,6 +13,9 @@ local None = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
 local PlaneCrazy = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
+local GameFrames = Instance.new("Folder")
+local None_2 = Instance.new("Frame")
+local PlaneCrazy_2 = Instance.new("Frame")
 
 --Properties:
 
@@ -77,17 +80,66 @@ PlaneCrazy.TextWrapped = true
 UICorner_4.CornerRadius = UDim.new(0, 12)
 UICorner_4.Parent = PlaneCrazy
 
+GameFrames.Name = "GameFrames"
+GameFrames.Parent = Scriptitect
+
+None_2.Name = "None"
+None_2.Parent = GameFrames
+None_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+None_2.Position = UDim2.new(0.749803901, 0, 0.177478582, 0)
+None_2.Size = UDim2.new(0, 100, 0, 100)
+
+PlaneCrazy_2.Name = "PlaneCrazy"
+PlaneCrazy_2.Parent = GameFrames
+PlaneCrazy_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlaneCrazy_2.Position = UDim2.new(0.75999999, 0, 0.340269268, 0)
+PlaneCrazy_2.Size = UDim2.new(0, 100, 0, 100)
+
 -- Scripts:
 
-local function XDNONWD_fake_script() -- None.ButtonScript 
+local function DHUJ_fake_script() -- None.ButtonScript 
 	local script = Instance.new('LocalScript', None)
 
+	local gameFrames = script.Parent.Parent.Parent.Parent.GameFrames
+	
 	script.Parent.Text = script.Parent.Name
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		local children = gameFrames:GetChildren()
+		for i = 1, #children do
+			children[i].Visible = false
+		end
+		wait()
+		script.Parent.Parent.Parent.Parent.GameFrames[script.Parent.Name].Visible = true
+	end)
 end
-coroutine.wrap(XDNONWD_fake_script)()
-local function GOVGVU_fake_script() -- PlaneCrazy.ButtonScript 
+coroutine.wrap(DHUJ_fake_script)()
+local function VYRCDAH_fake_script() -- PlaneCrazy.ButtonScript 
 	local script = Instance.new('LocalScript', PlaneCrazy)
 
+	local gameFrames = script.Parent.Parent.Parent.Parent.GameFrames
+	
 	script.Parent.Text = script.Parent.Name
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		local children = gameFrames:GetChildren()
+		for i = 1, #children do
+			children[i].Visible = false
+		end
+		wait()
+		script.Parent.Parent.Parent.Parent.GameFrames[script.Parent.Name].Visible = true
+	end)
 end
-coroutine.wrap(GOVGVU_fake_script)()
+coroutine.wrap(VYRCDAH_fake_script)()
+local function MFXG_fake_script() -- Scriptitect.MainScript 
+	local script = Instance.new('LocalScript', Scriptitect)
+
+	local gui = script.Parent
+	local gameFrames = gui.GameFrames
+	
+	local children = gameFrames:GetChildren()
+	for i = 1, #children do
+		children[i].Visible = false
+	end
+end
+coroutine.wrap(MFXG_fake_script)()
